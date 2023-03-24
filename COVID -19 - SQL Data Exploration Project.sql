@@ -8,10 +8,10 @@ SELECT location, SUM(people_vaccinated)
 	HAVING SUM(people_vaccinated) NOT NULL
 	ORDER BY 2;
 
--- The mortality rate(case-fatality rate)
+-- The mortality rate (case-fatality rate)
 
 SELECT location, SUM(total_deaths), SUM(total_cases), 
-SUM( CAST(total_deaths AS float) ) / SUM ( CAST( total_cases AS float) )
+SUM( CAST(total_deaths AS float) ) / SUM ( CAST( total_cases AS float) ) AS 'Mortality Rate'
 	FROM deaths_and_cases 
 	GROUP BY location; 
 
