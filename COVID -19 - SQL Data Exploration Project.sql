@@ -1,4 +1,4 @@
-Skills used: SELECT, FROM, JOIN, SUM, ROUND, AVG, MAX, MIN, GROUP BY, ORDER BY, and UNION ALL
+-- Skills used: SELECT, FROM, JOIN, SUM, ROUND, AVG, MAX, MIN, GROUP BY, ORDER BY, and UNION ALL
 
 -- Number of people vaccinated in each country 
 
