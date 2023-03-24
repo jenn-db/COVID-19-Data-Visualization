@@ -112,9 +112,9 @@ SELECT location, date, MAX(new_cases)
 
 -- Total number of people fully vaccinated in each country with the total vaccinated 
 SELECT location, SUM(people_fully_vaccinated)
-	FROM covid_tests
-	GROUP BY location
-UNION ALL 
+FROM covid_tests
+GROUP BY location
+	UNION ALL 
 SELECT NULL, SUM(people_fully_vaccinated) FROM covid_tests;
 
 -- Total people vaccinated population, and new cases for each country
