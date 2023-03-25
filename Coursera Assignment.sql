@@ -179,9 +179,9 @@ SELECT companyname, sum(unitprice * quantity) as "Total Sales",
       WHEN sum(unitprice * quantity) < 110000 THEN 'Average'
         ELSE 'Outstanding'
   END  Assessment
-  
-  FROM "alanparadise/nw"."customers" C JOIN
-    "alanparadise/nw"."orders" O ON C.customerid  =  O.customerid JOIN 
-          "alanparadise/nw"."orderdetails" D ON O.orderid  =  D.orderid
+
+FROM "alanparadise/nw"."customers" C JOIN
+  "alanparadise/nw"."orders" O ON C.customerid  =  O.customerid JOIN 
+        "alanparadise/nw"."orderdetails" D ON O.orderid  =  D.orderid
 GROUP BY companyname 
 Order By 2 desc LIMIT 5;
