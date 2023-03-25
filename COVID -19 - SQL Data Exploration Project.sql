@@ -10,14 +10,14 @@ ORDER BY 2;
 
 -- The mortality rate (case-fatality rate) by country
 SELECT location, SUM(total_deaths), SUM(total_cases), 
-ROUND(SUM( CAST(total_deaths AS float) ) / SUM ( CAST( total_cases AS float) ) *100,2) AS 'Mortality Rate'
+    ROUND(SUM( CAST(total_deaths AS float) ) / SUM ( CAST( total_cases AS float) ) *100,2) AS 'Mortality Rate'
 FROM deaths_and_cases 
 WHERE total_deaths IS NOT NULL AND total_cases IS NOT NULL
 GROUP BY location; 
 
 -- The mortality rate (case-fatality rate) per continent
 SELECT continent, SUM(total_deaths), SUM(total_cases), 
-ROUND(SUM( CAST(total_deaths AS float) ) / SUM ( CAST( total_cases AS float) ) *100,2) AS 'Mortality Rate'
+    ROUND(SUM( CAST(total_deaths AS float) ) / SUM ( CAST( total_cases AS float) ) *100,2) AS 'Mortality Rate'
 FROM deaths_and_cases 
 WHERE total_deaths IS NOT NULL AND total_cases IS NOT NULL
 AND  continent is NOT NULL
@@ -26,15 +26,15 @@ ORDER BY 2 DESC;
 
 -- global numbers
 SELECT SUM(total_deaths), SUM(total_cases), SUM(total_vaccinations), 
-ROUND(SUM(CAST(total_deaths as float))/SUM(CAST (total_cases AS FLOAT))*100,2) AS 'case-fatality rate',
-ROUND(SUM(CAST(total_deaths AS FLOAT)) / SUM(CAST(population AS FLOAT)) *100, 2) AS 'Death Rate'
+    ROUND(SUM(CAST(total_deaths as float))/SUM(CAST (total_cases AS FLOAT))*100,2) AS 'case-fatality rate',
+    ROUND(SUM(CAST(total_deaths AS FLOAT)) / SUM(CAST(population AS FLOAT)) *100, 2) AS 'Death Rate'
 FROM deaths_and_cases
 WHERE total_deaths NOT NULL and total_cases NOT NULL
 
 --The mortality rate(case-fatality rate) in a specific country
 
 SELECT location, SUM(total_deaths), SUM(total_cases), 
-ROUND(SUM( CAST(total_deaths AS float) ) / SUM ( CAST( total_cases AS float) )*100, 2) AS "Deaths Per Cases"
+    ROUND(SUM( CAST(total_deaths AS float) ) / SUM ( CAST( total_cases AS float) )*100, 2) AS "Deaths Per Cases"
 FROM deaths_and_cases 
 WHERE location like '%states' 
 GROUP BY location; 
@@ -79,7 +79,7 @@ ORDER BY 2 DESC;
 -- Countries with the highest death count per population
 
 SELECT location, SUM(total_deaths), 
-ROUND(SUM(CAST (total_deaths AS FLOAT) /CAST (population AS FLOAT))*100,2) AS "Death Count"
+    ROUND(SUM(CAST (total_deaths AS FLOAT) /CAST (population AS FLOAT))*100,2) AS "Death Count"
 FROM deaths_and_cases
 WHERE total_deaths NOT NULL 
 GROUP BY location
@@ -103,10 +103,10 @@ ORDER BY 4 DESC;
 -- Day with the highest infection rate in each country
 SELECT location, population, date, ROUND(MAX(infection_rate) ,2) as "Infection Rate"
 FROM (
-SELECT location, population, date, 
-CAST(total_cases AS FLOAT) / CAST(population AS FLOAT) * 100 AS infection_rate
-FROM deaths_and_cases
-) 
+    SELECT location, population, date, 
+    CAST(total_cases AS FLOAT) / CAST(population AS FLOAT) * 100 AS infection_rate
+    FROM deaths_and_cases
+    ) 
 GROUP BY location, population
 ORDER BY 4 DESC;
 
@@ -127,11 +127,12 @@ GROUP BY location;
 SELECT t1.location, t1.date, t1.new_cases
 FROM deaths_and_cases t1
 INNER JOIN (
-SELECT location, MAX(new_cases) AS max_new_cases
-FROM deaths_and_cases
-WHERE continent IS NOT NULL
-GROUP BY location
-) t2 ON t1.location = t2.location AND t1.new_cases = t2.max_new_cases
+    SELECT location, MAX(new_cases) AS max_new_cases
+    FROM deaths_and_cases
+    WHERE continent IS NOT NULL
+    GROUP BY location
+    ) t2
+    ON t1.location = t2.location AND t1.new_cases = t2.max_new_cases
 ORDER BY t1.location;
 
 -- Total number of people fully vaccinated in each country with the total vaccinated 
@@ -139,7 +140,7 @@ SELECT location, SUM(people_fully_vaccinated) AS total_people_fully_vaccinated
 FROM covid_tests
 WHERE people_fully_vaccinated IS NOT NULL
 GROUP BY location
-UNION ALL
+    UNION ALL
 SELECT 'Total', SUM(people_fully_vaccinated) AS total_people_fully_vaccinated
 FROM covid_tests
 WHERE people_fully_vaccinated IS NOT NULL;
