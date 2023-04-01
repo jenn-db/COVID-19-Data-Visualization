@@ -93,7 +93,7 @@ WHERE total_vaccinations IS NOT NULL AND continent IS NOT NULL
 GROUP BY location
 ORDER BY 2;
 
--- Countries with the highest count of cases (infection rate) compared to Population over time
+-- Countries with the highest count of cases (infection rate) compared to Population over 
 
 SELECT location, population, SUM(total_cases) as "Infection Count", ROUND(SUM(CAST(total_cases AS FLOAT)/CAST(population AS FLOAT))*100, 2) AS "Infection Rate"
 FROM deaths_and_cases
@@ -151,13 +151,18 @@ FROM deaths_and_cases d
 JOIN covid_tests t
 ON d.iso_code = t.iso_code;
 
-
--- Case and death trends over time
-SELECT date, SUM(new_cases), SUM(total_deaths)
+-- new cases, total deaths, new vaccinations over time
+SELECT date, SUM(new_cases), SUM(total_deaths), SUM(new_vaccinations)
 FROM deaths_and_cases
 WHERE continent IS NOT NULL AND new_cases IS NOT NULL AND total_deaths IS NOT NULL
+AND new_vaccinations IS NOT NULL
 GROUP BY date;
 
+-- positive rate vs new tests over time
+SELECT date, SUM(positive_rate), SUM(new_tests)
+FROM deaths_and_cases
+WHERE positive_rate NOT NULL AND new_tests NOT NULL
+GROUP BY date;
 
 -- percentage of hospitalized, and intensive care patients for each country 
 SELECT 
