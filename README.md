@@ -2,7 +2,7 @@
 
 ## Skills used: 
   * SQL: SELECT, FROM, JOIN, SUM, ROUND, AVG, MAX, MIN, GROUP BY, ORDER BY, and UNION ALL
-  * Tableau: Calculated fields, data viusalization (dual axis combination,heatmap,line graph, column chart).
+  * Tableau: Calculated fields, data viusalization (dual axis combination, heatmap, line graph, column chart).
 
 
 
