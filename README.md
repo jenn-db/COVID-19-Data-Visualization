@@ -11,6 +11,7 @@ For this project, I downloaded data from [Our World in Data](https://ourworldind
 
 **Output:**
  * [Tableau Public Dashboard](https://public.tableau.com/shared/QXJC2BD9M?:display_count=n&:origin=viz_share_link)
+ * [SQL script](https://github.com/jenn-db/Covid-19-SQL-Tableau/blob/main/COVID-19%20SQL.sql) 
 
 
 **This project shows the:**
