@@ -14,8 +14,8 @@ For this project, I downloaded data from [Our World in Data](https://ourworldind
  * [SQL script](https://github.com/jenn-db/Covid-19-SQL-Tableau/blob/main/COVID-19%20SQL.sql) 
 
 **This project shows the:**
- * Monthly New Covid Cases
- * Infection and death rate per country
- * Mortality Rates per continent
- * Monthly positive rate and monthly new tests
- * Percentage of hospitalized and percentage of ICU patients
+ * New Monthly Covid Cases
+ * Infection and Death Rate per Country
+ * Mortality Rates per Continent
+ * Monthly Positive Rate and Monthly New Tests
+ * Percentage of Hospitalized patients and Percentage of ICU patients
